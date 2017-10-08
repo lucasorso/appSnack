@@ -1,0 +1,2 @@
+# appSnack
+Small college project
