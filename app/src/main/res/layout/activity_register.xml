@@ -39,7 +39,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/name"
                         android:imeOptions="actionNext"
-                        android:inputType="textPassword"
+                        android:inputType="text"
                         android:maxLines="1"
                         android:singleLine="true"/>
 

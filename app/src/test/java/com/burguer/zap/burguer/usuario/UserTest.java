@@ -2,7 +2,7 @@ package com.burguer.zap.burguer.usuario;
 
 import android.support.annotation.NonNull;
 
-import com.burguer.zap.burguer.rest.base.BaseRetrofit;
+import com.burguer.zap.burguer.rest.generic.BaseRetrofit;
 import com.burguer.zap.burguer.rest.usuario.UserRest;
 import com.burguer.zap.burguer.vo.Usuario;
 import com.google.gson.Gson;

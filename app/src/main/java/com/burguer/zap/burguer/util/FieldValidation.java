@@ -11,7 +11,7 @@ public class FieldValidation {
 
     /**
      * <p>
-     * Função copidad do DEVMEDIA - http://www.devmedia.com.br/validando-o-cpf-em-uma-aplicacao-java/22097
+     * Função copida do DEVMEDIA - http://www.devmedia.com.br/validando-o-cpf-em-uma-aplicacao-java/22097
      * Créditos - Omero Francisco Bertol
      * </p>
      * <br>

@@ -11,7 +11,7 @@ import android.widget.EditText;
 
 import com.burguer.zap.burguer.R;
 import com.burguer.zap.burguer.activities.base.BaseActivity;
-import com.burguer.zap.burguer.rest.base.BaseRetrofit;
+import com.burguer.zap.burguer.rest.generic.BaseRetrofit;
 import com.burguer.zap.burguer.rest.usuario.UserRest;
 import com.burguer.zap.burguer.rest.usuario.request.RegisterRequest;
 import com.burguer.zap.burguer.vo.Usuario;
@@ -100,7 +100,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             lEmailView.setError(getString(R.string.error_field_required));
             focusView = lEmailView;
             cancel = true;
-        } else if (isEmailValid(lEmail)) {
+        } else if (!isEmailValid(lEmail)) {
             lEmailView.setError(getString(R.string.error_invalid_email));
             focusView = lEmailView;
             cancel = true;

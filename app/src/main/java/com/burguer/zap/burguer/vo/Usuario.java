@@ -8,31 +8,20 @@ import com.google.gson.annotations.SerializedName;
 
 public class Usuario {
 
-    @SerializedName("CPF")
-    private String mCpf;
-
-    @SerializedName("Nome")
+    @SerializedName("nm_usuario")
     private String mNome;
 
-    @SerializedName("IdUsuario")
+    @SerializedName("id")
     private Long mIdUsuario;
 
-    @SerializedName("Email")
+    @SerializedName("ds_login")
     private String mEmail;
 
-    @SerializedName("IdApp")
+    @SerializedName("id_app")
     private Long mIdApp;
 
-    @SerializedName("Senha")
+    @SerializedName("ds_senha")
     private String mSenha;
-
-    public String getCpf() {
-        return mCpf;
-    }
-
-    public void setCpf(String aCpf) {
-        mCpf = aCpf;
-    }
 
     public String getNome() {
         return mNome;

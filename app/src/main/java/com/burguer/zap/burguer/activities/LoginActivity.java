@@ -7,14 +7,18 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.burguer.zap.burguer.R;
 import com.burguer.zap.burguer.activities.base.BaseActivity;
-import com.burguer.zap.burguer.rest.base.BaseRetrofit;
+import com.burguer.zap.burguer.rest.generic.BaseRetrofit;
 import com.burguer.zap.burguer.rest.usuario.UserRest;
 import com.burguer.zap.burguer.rest.usuario.request.LoginRequest;
 import com.burguer.zap.burguer.vo.Usuario;
 import com.google.gson.Gson;
+
+import java.util.List;
+import java.util.Map;
 
 import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 import retrofit2.Call;
@@ -30,7 +34,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     private static final String TAG = "LoginActivity";
 
-    private Call<Usuario> mCAllGetUsers;
+    private Call<List<Usuario>> mCAllGetUser;
     private UserRest.Api mUserRestApi;
 
     @Override
@@ -61,22 +65,21 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private void createCallbackListeners() {
-        mCAllGetUsers.enqueue(new Callback<Usuario>() {
+        mCAllGetUser.enqueue(new Callback<List<Usuario>>() {
             @Override
-            public void onResponse(@NonNull Call<Usuario> call, @NonNull Response<Usuario> response) {
+            public void onResponse(@NonNull Call<List<Usuario>> call, @NonNull Response<List<Usuario>> response) {
                 Log.e(TAG, response.message());
                 String lReponseJson = new Gson().toJson(response.body());
                 showProgress(false);
-                // TODO: 10/7/17 Lucas Implementar quando retorno do WS ficar pronto
-                doFakeLogin();
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+
             }
 
             @Override
-            public void onFailure(@NonNull Call<Usuario> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<List<Usuario>> call, @NonNull Throwable t) {
                 Log.e(TAG, t.getMessage());
                 showProgress(false);
-                // TODO: 10/7/17 Lucas Implementar quando retorno do WS ficar pronto
-                doFakeLogin();
+                Toast.makeText(LoginActivity.this, "Login Inválido", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -97,8 +100,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private void attemptLogin() {
-        EditText lPasswordView = findViewById(R.id.email);
-        EditText lEmailView = findViewById(R.id.password);
+        EditText lPasswordView = findViewById(R.id.password);
+        EditText lEmailView = findViewById(R.id.email);
 
         lPasswordView.setError(null);
         lEmailView.setError(null);
@@ -123,7 +126,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             lEmailView.setError(getString(R.string.error_field_required));
             focusView = lEmailView;
             cancel = true;
-        } else if (isEmailValid(lEmail)) {
+        } else if (!isEmailValid(lEmail)) {
             lEmailView.setError(getString(R.string.error_invalid_email));
             focusView = lEmailView;
             cancel = true;
@@ -145,7 +148,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     private void doLogin(LoginRequest aRequest) {
         showProgress(true);
-        mCAllGetUsers = mUserRestApi.doLogin(aRequest);
+        Map<String, String> lParams = BaseRetrofit.getParams(aRequest);
+        mCAllGetUser = mUserRestApi.doLogin(lParams);
         createCallbackListeners();
     }
 

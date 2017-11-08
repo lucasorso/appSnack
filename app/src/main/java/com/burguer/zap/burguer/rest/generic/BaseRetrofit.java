@@ -1,11 +1,11 @@
-package com.burguer.zap.burguer.rest.base;
+package com.burguer.zap.burguer.rest.generic;
 
 import com.burguer.zap.burguer.properties.WS_PROPERTY;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -38,9 +38,9 @@ public class BaseRetrofit {
                 .build();
     }
 
-    public Map<String, String> getParams(Object aRequest) {
-        String lJson = new Gson().toJson(aRequest);
-        Type lType = new TypeToken<Map<String, String>>() {}.getType();
-        return new Gson().fromJson(lJson, lType);
+    public static Map<String, String> getParams(GenericRequest aRequest) {
+        Gson gson = new GsonBuilder().create();
+        String lS = gson.toJson(aRequest);
+        return gson.<HashMap<String, String>>fromJson(lS, new TypeToken<HashMap<String, String>>() {}.getType());
     }
 }
