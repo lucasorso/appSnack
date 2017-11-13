@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:padding="32dp"
+    android:padding="@dimen/activity_horizontal_margin"
     tools:context="com.burguer.zap.burguer.activities.LoginActivity">
 
     <ScrollView
@@ -86,10 +86,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/label_password"
+                android:layout_centerHorizontal="true"
                 android:background="@drawable/circular_border_shape"
                 android:text="@string/action_resgister"
                 android:textColor="@color/white"
                 android:textStyle="bold"
+                android:layout_marginTop="32dp"
                 app:initialCornerAngle="5dp"
                 app:spinning_bar_color="#FFF"
                 app:spinning_bar_padding="6dp"
