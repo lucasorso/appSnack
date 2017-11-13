@@ -30,10 +30,10 @@
         <activity
             android:name=".activities.LoginActivity"
             android:theme="@style/AppLoginTheme"
-            android:windowSoftInputMode="stateHidden|adjustResize"/>
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden"/>
         <activity
             android:name=".activities.RegisterActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize"/>
+            android:windowSoftInputMode="stateAlwaysVisible"/>
 
         <service android:name=".firebase.FirebaseMessage">
             <intent-filter>

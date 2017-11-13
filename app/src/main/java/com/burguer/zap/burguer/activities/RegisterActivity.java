@@ -47,6 +47,12 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         createViewsListeners();
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        findViewById(R.id.name).requestFocus();
+    }
+
     private void configureActionBar() {
         ActionBar lSupportActionBar = getSupportActionBar();
         if (lSupportActionBar != null) {
