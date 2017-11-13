@@ -1,12 +1,13 @@
 apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    compileSdkVersion 27
+    buildToolsVersion "26.0.2"
     defaultConfig {
         applicationId 'com.burguer.zap.burguer'
         minSdkVersion 21
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -19,6 +20,10 @@ android {
     }
     productFlavors {
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
@@ -26,20 +31,23 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:26.0.2'
-    compile 'com.android.support:support-vector-drawable:26.0.2'
-    compile 'com.android.support:design:26.0.2'
+    compile 'com.android.support:appcompat-v7:27.0.0'
+    compile 'com.android.support:support-vector-drawable:27.0.0'
+    compile 'com.android.support:design:27.0.0'
     compile 'com.google.code.gson:gson:2.8.2'
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
     compile 'com.squareup.okhttp3:okhttp:3.9.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.9.0'
     compile 'br.com.simplepass:loading-button-android:1.8.2'
-    compile 'com.google.firebase:firebase-core:11.2.2'
-    compile 'com.google.firebase:firebase-messaging:11.2.2'
+    compile 'com.google.firebase:firebase-core:11.6.0'
+    compile 'com.google.firebase:firebase-messaging:11.6.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     testCompile 'org.robolectric:robolectric:3.4.2'
+    implementation 'com.mikepenz:fastadapter:3.0.1@aar'
+    implementation 'com.mikepenz:fastadapter-commons:3.0.1@aar'
+    implementation "com.mikepenz:itemanimators:1.0.1@aar"
 }
 
 apply plugin: 'com.google.gms.google-services'

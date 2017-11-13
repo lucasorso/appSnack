@@ -2,12 +2,16 @@ package com.burguer.zap.burguer.vo;
 
 import com.google.gson.annotations.SerializedName;
 
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
 /**
  * Created by LucasOrso on 10/5/17.
  */
 
-public class Usuario {
+public class Usuario extends RealmObject{
 
+    @PrimaryKey
     @SerializedName("nm_usuario")
     private String mNome;
 
@@ -22,6 +26,8 @@ public class Usuario {
 
     @SerializedName("ds_senha")
     private String mSenha;
+
+    private Boolean mLoggedUser;
 
     public String getNome() {
         return mNome;
@@ -61,5 +67,21 @@ public class Usuario {
 
     public void setSenha(String aSenha) {
         mSenha = aSenha;
+    }
+
+    public Long getIdUsuario() {
+        return mIdUsuario;
+    }
+
+    public void setIdUsuario(Long aIdUsuario) {
+        mIdUsuario = aIdUsuario;
+    }
+
+    public Boolean getLoggedUser() {
+        return mLoggedUser;
+    }
+
+    public void setLoggedUser(Boolean aLoggedUser) {
+        mLoggedUser = aLoggedUser;
     }
 }

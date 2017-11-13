@@ -11,14 +11,17 @@ import android.widget.Toast;
 
 import com.burguer.zap.burguer.R;
 import com.burguer.zap.burguer.activities.base.BaseActivity;
+import com.burguer.zap.burguer.repository.UsuarioRepository;
 import com.burguer.zap.burguer.rest.generic.BaseRetrofit;
 import com.burguer.zap.burguer.rest.usuario.UserRest;
 import com.burguer.zap.burguer.rest.usuario.request.LoginRequest;
 import com.burguer.zap.burguer.vo.Usuario;
-import com.google.gson.Gson;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+
+import javax.security.auth.login.LoginException;
 
 import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 import retrofit2.Call;
@@ -69,23 +72,48 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             @Override
             public void onResponse(@NonNull Call<List<Usuario>> call, @NonNull Response<List<Usuario>> response) {
                 Log.e(TAG, response.message());
-                String lReponseJson = new Gson().toJson(response.body());
                 showProgress(false);
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-
+                List<Usuario> lBody = response.body();
+                boolean lSucess = true;
+                if (lBody != null && lBody.get(0) != null) {
+                    lSucess = validateWsRepose(lBody.get(0));
+                } else {
+                    onFailure(call, new LoginException("Verificar Retorno do WS!"));
+                }
+                if (lSucess) {
+                    UsuarioRepository lRepository = new UsuarioRepository();
+                    lRepository.logInUser(lBody.get(0));
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                } else {
+                    onFailure(call, new LoginException("Login Inválido!"));
+                }
             }
 
             @Override
             public void onFailure(@NonNull Call<List<Usuario>> call, @NonNull Throwable t) {
                 Log.e(TAG, t.getMessage());
                 showProgress(false);
-                Toast.makeText(LoginActivity.this, "Login Inválido", Toast.LENGTH_SHORT).show();
+                String lMessage;
+                if (t.getMessage() != null) {
+                    lMessage = t.getMessage();
+                } else {
+                    lMessage = "ERROR !";
+                }
+                Toast.makeText(LoginActivity.this, lMessage, Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void doFakeLogin() {
+    private boolean validateWsRepose(Usuario aUsuario) {
+        String lEmail = aUsuario.getEmail();
+        EditText lEmailView = findViewById(R.id.email);
+        boolean lEmailSuccess = Objects.equals(lEmail, lEmailView.getText().toString());
+        String lSenha = aUsuario.getSenha();
+        EditText lPasswordView = findViewById(R.id.password);
+        boolean lPasswordSucess = Objects.equals(lSenha, lPasswordView.getText().toString());
+        return lEmailSuccess && lPasswordSucess;
     }
+
 
     private void createViewsListeners() {
         findViewById(R.id.email).setOnClickListener(this);
@@ -152,7 +180,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         mCAllGetUser = mUserRestApi.doLogin(lParams);
         createCallbackListeners();
     }
-
 
     private void showProgress(boolean aShow) {
         CircularProgressButton lView = findViewById(R.id.button_login);
