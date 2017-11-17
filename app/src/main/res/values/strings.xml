@@ -23,4 +23,8 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <string name="Titulo_List">Nome Comida</string>
+    <string name="Descricao_List">Descrição Comida bla bla bla bla bla bla bla bla bla n sei oq n sei oq la</string>
+
 </resources>

@@ -5,4 +5,5 @@ package com.burguer.zap.burguer.repository;
  */
 
 public class CardapioRepository {
+
 }
