@@ -6,15 +6,18 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.burguer.zap.burguer.R;
 import com.burguer.zap.burguer.activities.base.BaseActivity;
+import com.burguer.zap.burguer.properties.APP_PROPS;
 import com.burguer.zap.burguer.repository.UsuarioRepository;
 import com.burguer.zap.burguer.rest.generic.BaseRetrofit;
 import com.burguer.zap.burguer.rest.usuario.UserRest;
 import com.burguer.zap.burguer.rest.usuario.request.LoginRequest;
+import com.burguer.zap.burguer.util.SharedPreferenceUtils;
 import com.burguer.zap.burguer.vo.Usuario;
 
 import java.util.List;
@@ -36,6 +39,7 @@ import static com.burguer.zap.burguer.util.FieldValidation.isPasswordValid;
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
     private static final String TAG = "LoginActivity";
+    private static final String LEMBRAR_LOGIN = "lembrar_login";
 
     private Call<List<Usuario>> mCAllGetUser;
     private UserRest.Api mUserRestApi;
@@ -56,8 +60,22 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 openRegisterActivity();
                 break;
             case R.id.button_login:
+                CheckBox lCheckBox = findViewById(R.id.checkbox_login);
+                saveLoginPreferences(lCheckBox.isChecked());
                 attemptLogin();
                 break;
+        }
+    }
+
+    private void saveLoginPreferences(boolean aChecked) {
+        SharedPreferenceUtils lInstance = SharedPreferenceUtils.getInstance(this);
+        if (aChecked) {
+            EditText lEmailView = findViewById(R.id.email);
+            lEmailView.setError(null);
+            String lEmail = lEmailView.getText().toString();
+            lInstance.setValue(LEMBRAR_LOGIN, lEmail);
+        } else {
+            lInstance.removeKey(LEMBRAR_LOGIN);
         }
     }
 
@@ -114,12 +132,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         return lEmailSuccess && lPasswordSucess;
     }
 
-
     private void createViewsListeners() {
-        findViewById(R.id.email).setOnClickListener(this);
+        EditText lEditTextEmail = findViewById(R.id.email);
+        lEditTextEmail.setOnClickListener(this);
+        setEmail(lEditTextEmail);
         findViewById(R.id.password).setOnClickListener(this);
         findViewById(R.id.register).setOnClickListener(this);
         findViewById(R.id.button_login).setOnClickListener(this);
+        findViewById(R.id.checkbox_login).setOnClickListener(this);
     }
 
     private void createInterface() {
@@ -187,6 +207,15 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             lView.startAnimation();
         } else {
             lView.revertAnimation();
+        }
+    }
+
+    public void setEmail(EditText aEmail) {
+        Bundle lBundle = getIntent().getExtras();
+        if (lBundle != null && lBundle.containsKey(APP_PROPS.BUNDLE.EMAIL)) {
+            aEmail.setText(lBundle.getString(APP_PROPS.BUNDLE.EMAIL));
+        } else {
+            aEmail.setText(SharedPreferenceUtils.getInstance(this).getStringValue(LEMBRAR_LOGIN, ""));
         }
     }
 }

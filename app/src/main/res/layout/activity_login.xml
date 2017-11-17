@@ -1,9 +1,9 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context="com.burguer.zap.burguer.activities.LoginActivity"
@@ -16,16 +16,17 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:src="@drawable/logo_inicial"
         android:focusable="true"
         android:focusableInTouchMode="true"
+        android:src="@drawable/logo_inicial"
         />
+
 
     <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
         android:id="@+id/button_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/label_password"
+        android:layout_below="@id/checkbox_login"
         android:layout_marginEnd="@dimen/activity_horizontal_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginTop="32dp"
@@ -34,14 +35,13 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:text="@string/action_sign_in"
+        android:layout_centerHorizontal="true"
         android:textColor="@color/white"
         android:textStyle="bold"
-        android:layout_centerHorizontal="true"
         app:initialCornerAngle="5dp"
         app:spinning_bar_color="#FFF"
         app:spinning_bar_padding="6dp"
-        app:spinning_bar_width="4dp"
-        />
+        app:spinning_bar_width="4dp"/>
 
     <TextView
         android:id="@+id/register"
@@ -69,6 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/prompt_email"
+            android:imeOptions="actionSend"
             android:inputType="textEmailAddress"
             android:maxLines="1"
             android:singleLine="true"
@@ -92,13 +93,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/prompt_password"
-            android:imeActionLabel="@string/action_sign_in_short"
-            android:imeOptions="actionUnspecified"
+            android:imeOptions="actionDone"
             android:inputType="textPassword"
             android:maxLines="1"
             android:singleLine="true"
             />
 
     </android.support.design.widget.TextInputLayout>
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/checkbox_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/label_password"
+        android:layout_below="@+id/label_password"
+        android:layout_marginTop="32dp"
+        android:checked="true"
+        android:textColor="@color/gray"
+        android:text="@string/lembrar_email"/>
 
 </RelativeLayout>

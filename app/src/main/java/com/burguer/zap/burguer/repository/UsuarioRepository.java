@@ -35,10 +35,15 @@ public class UsuarioRepository {
         Usuario lUsuario = null;
         try {
             lRealm.beginTransaction();
-            lUsuario = lRealm.copyFromRealm(lRealm.where(Usuario.class).findFirst());
+            Usuario lResult = lRealm.where(Usuario.class).findFirst();
+            if (lResult != null) {
+                lUsuario = lRealm.copyFromRealm(lResult);
+            }
         } catch (Exception aE) {
             aE.printStackTrace();
             return null;
+        } finally {
+            lRealm.close();
         }
         return lUsuario;
     }
