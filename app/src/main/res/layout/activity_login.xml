@@ -26,22 +26,20 @@
         android:id="@+id/button_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/checkbox_login"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="32dp"
+        android:layout_alignStart="@+id/checkbox_login"
+        android:layout_below="@+id/checkbox_login"
+        android:layout_marginTop="19dp"
         android:background="@drawable/circular_border_shape"
         android:gravity="center"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:text="@string/action_sign_in"
-        android:layout_centerHorizontal="true"
         android:textColor="@color/white"
         android:textStyle="bold"
         app:initialCornerAngle="5dp"
         app:spinning_bar_color="#FFF"
         app:spinning_bar_padding="6dp"
-        app:spinning_bar_width="4dp"/>
+        app:spinning_bar_width="4dp" />
 
     <TextView
         android:id="@+id/register"
