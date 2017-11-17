@@ -7,6 +7,7 @@ import com.burguer.zap.burguer.vo.Cardapio;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
@@ -22,6 +23,6 @@ public class CardapioRest {
         Call<List<Cardapio>> getListOfCardapio();
 
         @POST("api/unesc/cardapioinserir")
-        Call<GenericResponse> insertCardapio(CardapioRequest aRequest);
+        Call<GenericResponse> insertCardapio(@Body CardapioRequest aRequest);
     }
 }

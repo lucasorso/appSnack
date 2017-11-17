@@ -23,4 +23,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="add_item">Adicionar item</string>
+    <string name="lembrar_email">Lembrar e mail</string>
+    <string name="exit">Sair</string>
 </resources>

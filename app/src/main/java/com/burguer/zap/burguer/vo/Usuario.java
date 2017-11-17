@@ -2,6 +2,8 @@ package com.burguer.zap.burguer.vo;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -9,7 +11,7 @@ import io.realm.annotations.PrimaryKey;
  * Created by LucasOrso on 10/5/17.
  */
 
-public class Usuario extends RealmObject{
+public class Usuario extends RealmObject implements Serializable{
 
     @PrimaryKey
     @SerializedName("nm_usuario")

@@ -1,5 +1,6 @@
 package com.burguer.zap.burguer.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,14 +9,15 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.burguer.zap.burguer.R;
 import com.burguer.zap.burguer.activities.base.BaseActivity;
+import com.burguer.zap.burguer.properties.APP_PROPS;
 import com.burguer.zap.burguer.rest.generic.BaseRetrofit;
 import com.burguer.zap.burguer.rest.usuario.UserRest;
 import com.burguer.zap.burguer.rest.usuario.request.RegisterRequest;
 import com.burguer.zap.burguer.vo.Usuario;
-import com.google.gson.Gson;
 
 import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 import retrofit2.Call;
@@ -138,18 +140,27 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             @Override
             public void onResponse(@NonNull Call<Usuario> call, @NonNull Response<Usuario> response) {
                 Log.e(TAG, response.message());
-                String lReponseJson = new Gson().toJson(response.body());
                 showProgress(false);
-                // TODO: 10/7/17 Lucas Implementar quando retorno do WS ficar pronto
+                completeRegister();
             }
 
             @Override
             public void onFailure(@NonNull Call<Usuario> call, @NonNull Throwable t) {
                 Log.e(TAG, t.getMessage());
                 showProgress(false);
-                // TODO: 10/7/17 Lucas Implementar quando retorno do WS ficar pronto
+                Toast.makeText(RegisterActivity.this, "Erro realizar cadastro!", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void completeRegister() {
+        Bundle lBundle = new Bundle();
+        EditText lEmailView = findViewById(R.id.email);
+        lBundle.putString(APP_PROPS.BUNDLE.EMAIL, lEmailView.getText().toString());
+        Intent lLogin = new Intent(RegisterActivity.this, LoginActivity.class);
+        lLogin.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        lLogin.putExtras(lBundle);
+        startActivity(lLogin);
     }
 
     private void showProgress(boolean aShow) {

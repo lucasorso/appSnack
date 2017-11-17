@@ -1,11 +1,10 @@
 package com.burguer.zap.burguer.properties;
 
 import android.support.annotation.IntDef;
+import android.support.annotation.StringDef;
 
 import java.lang.annotation.Retention;
 
-import static com.burguer.zap.burguer.properties.APP_PROPS.MANAGER;
-import static com.burguer.zap.burguer.properties.APP_PROPS.USER;
 import static java.lang.annotation.RetentionPolicy.SOURCE;
 
 /**
@@ -13,8 +12,22 @@ import static java.lang.annotation.RetentionPolicy.SOURCE;
  */
 
 @Retention(SOURCE)
-@IntDef({USER, MANAGER})
+
 public @interface APP_PROPS {
-    int USER = 98;
-    int MANAGER = 99;
+
+    @IntDef()
+    @interface USER_TYPE {
+        int USER = 98;
+        int MANAGER = 99;
+    }
+
+    @StringDef()
+    @interface BUNDLE {
+        String EMAIL = "email";
+    }
+
+    @StringDef()
+    @interface FIREBASE {
+        String PROMOCAO = "promocao";
+    }
 }
