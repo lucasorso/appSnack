@@ -34,4 +34,7 @@
     <string name="atention">Atenção</string>
     <string name="remover">Deseja remover a promoção %1$s</string>
     <string name="ok">Ok</string>
+
+    <string name="Titulo_List">Nome Comida</string>
+    <string name="Descricao_List">Descrição Comida bla bla bla bla bla bla bla bla bla n sei oq n sei oq la</string>
 </resources>

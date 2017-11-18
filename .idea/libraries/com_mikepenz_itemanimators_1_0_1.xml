@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="com.mikepenz:itemanimators-1.0.1">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/itemanimators-1.0.1.aar/23769734400f5daa9c76d305f8bc491c/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/itemanimators-1.0.1.aar/23769734400f5daa9c76d305f8bc491c/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mikepenz/itemanimators/1.0.1/e758fa49be8e5e4239dde021dee1d4a73962fc4c/itemanimators-1.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
