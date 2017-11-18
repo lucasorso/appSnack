@@ -28,6 +28,6 @@ public @interface APP_PROPS {
 
     @StringDef()
     @interface FIREBASE {
-        String PROMOCAO = "promocao";
+        String PROMOCAO = "Promotions";
     }
 }

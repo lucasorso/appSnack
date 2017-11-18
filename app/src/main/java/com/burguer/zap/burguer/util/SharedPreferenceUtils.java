@@ -48,6 +48,7 @@ public class SharedPreferenceUtils {
         mSharedPreferencesEditor.putLong(key, value);
         mSharedPreferencesEditor.apply();
     }
+
     public void setValue(String key, boolean value) {
         mSharedPreferencesEditor.putBoolean(key, value);
         mSharedPreferencesEditor.apply();

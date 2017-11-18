@@ -22,8 +22,16 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_notifications">Promoções</string>
     <string name="add_item">Adicionar item</string>
     <string name="lembrar_email">Lembrar e mail</string>
     <string name="exit">Sair</string>
+    <string name="add_promotion">Adicionar promoção</string>
+    <string name="promoiton_register">Cadastro de promoção</string>
+    <string name="value">Valor</string>
+    <string name="description">Descrição</string>
+    <string name="valid">Válido até:</string>
+    <string name="atention">Atenção</string>
+    <string name="remover">Deseja remover a promoção %1$s</string>
+    <string name="ok">Ok</string>
 </resources>

@@ -50,6 +50,7 @@
             android:label="@string/app_name">
         </activity>
         <activity android:name=".activities.AdminCard"/>
+        <activity android:name=".activities.PromotionRegisterActivity"/>
     </application>
 
 </manifest>

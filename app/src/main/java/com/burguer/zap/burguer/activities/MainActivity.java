@@ -15,7 +15,7 @@ import com.burguer.zap.burguer.activities.base.BaseActivity;
 import com.burguer.zap.burguer.fragments.MenuFragment;
 import com.burguer.zap.burguer.fragments.MenuRequestFragment;
 import com.burguer.zap.burguer.fragments.PromotionFragment;
-import com.burguer.zap.burguer.fragments.dummy.DummyContent;
+import com.burguer.zap.burguer.fragments.dummy.Promotion;
 import com.burguer.zap.burguer.fragments.dummy.Menu;
 import com.burguer.zap.burguer.fragments.dummy.MenuRequest;
 import com.burguer.zap.burguer.properties.APP_PROPS;
@@ -50,12 +50,23 @@ public class MainActivity extends BaseActivity
                 startActivity(new Intent(this, AdminCard.class));
                 return false;
             });
+            MenuItem lAddPromotion = menu.add(0, 2, 2, menuIconWithText(getResources().getDrawable(R.drawable.ic_add), getResources().getString(R.string.add_promotion)));
+            lAddPromotion.setOnMenuItemClickListener(aMenuItem -> {
+                startActivity(new Intent(this, PromotionRegisterActivity.class));
+                return false;
+            });
+            MenuItem lExit = menu.add(0, 3, 3, menuIconWithText(getResources().getDrawable(R.drawable.ic_exit_to_app), getResources().getString(R.string.exit)));
+            lExit.setOnMenuItemClickListener(aMenuItem -> {
+                logOutUser();
+                return false;
+            });
+        } else {
+            MenuItem lExit = menu.add(0, 1, 1, menuIconWithText(getResources().getDrawable(R.drawable.ic_exit_to_app), getResources().getString(R.string.exit)));
+            lExit.setOnMenuItemClickListener(aMenuItem -> {
+                logOutUser();
+                return false;
+            });
         }
-        MenuItem lExit = menu.add(0, 2, 2, menuIconWithText(getResources().getDrawable(R.drawable.ic_exit_to_app), getResources().getString(R.string.exit)));
-        lExit.setOnMenuItemClickListener(aMenuItem -> {
-            logOutUser();
-            return false;
-        });
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -116,17 +127,11 @@ public class MainActivity extends BaseActivity
     }
 
     @Override
-    public void onListFragmentInteraction(Menu.DummyItem item) {
-
-    }
+    public void onListFragmentInteraction(Menu.DummyItem item) {/*Nothing*/}
 
     @Override
-    public void onListFragmentInteraction(DummyContent.DummyItem item) {
-
-    }
+    public void onListFragmentInteraction(Promotion item) {/*Nothing*/}
 
     @Override
-    public void onListFragmentInteraction(MenuRequest.DummyItem item) {
-
-    }
+    public void onListFragmentInteraction(MenuRequest.DummyItem item) {/*Nohting*/}
 }

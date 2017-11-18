@@ -4,6 +4,7 @@ import com.burguer.zap.burguer.rest.cardapio.CardapioRest;
 import com.burguer.zap.burguer.rest.cardapio.request.CardapioRequest;
 import com.burguer.zap.burguer.rest.generic.BaseRetrofit;
 import com.burguer.zap.burguer.rest.generic.GenericResponse;
+import com.burguer.zap.burguer.util.Monetary;
 import com.burguer.zap.burguer.vo.Cardapio;
 
 import org.junit.Before;
@@ -106,5 +107,16 @@ public class CardapioTest {
                 System.out.println(t.getMessage());
             }
         });*/
+    }
+
+    @Config(sdk = 23)
+    @Test
+    public void convertDouble() {
+        Double lDouble = Monetary.sStringWithCurrencyToDouble("$9.90");
+        System.out.println("\n");
+        System.out.println(String.format("Value String to Double %.2f", lDouble));
+        String lStringDouble = Monetary.sDoubleToString(lDouble);
+        System.out.println(String.format("Value Double to String %s", lStringDouble));
+
     }
 }
