@@ -1,4 +1,4 @@
-package com.burguer.zap.burguer.fragments;
+package com.burguer.zap.burguer.fragments.menurequest;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,22 +7,21 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.burguer.zap.burguer.R;
-import com.burguer.zap.burguer.fragments.MenuFragment.OnListFragmentInteractionListener;
-import com.burguer.zap.burguer.fragments.dummy.Menu.DummyItem;
+import com.burguer.zap.burguer.vo.MenuRequest.DummyItem;
 
 import java.util.List;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
+ * specified {@link MenuRequestFragment.OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class MenuRecyclerViewAdapter extends RecyclerView.Adapter<MenuRecyclerViewAdapter.ViewHolder> {
+public class MenuRequestRecyclerViewAdapter extends RecyclerView.Adapter<MenuRequestRecyclerViewAdapter.ViewHolder> {
 
     private final List<DummyItem> mValues;
-    private final OnListFragmentInteractionListener mListener;
+    private final MenuRequestFragment.OnListFragmentInteractionListener mListener;
 
-    public MenuRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public MenuRequestRecyclerViewAdapter(List<DummyItem> items, MenuRequestFragment.OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -30,7 +29,7 @@ public class MenuRecyclerViewAdapter extends RecyclerView.Adapter<MenuRecyclerVi
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_menu, parent, false);
+                .inflate(R.layout.fragment_menurequest, parent, false);
         return new ViewHolder(view);
     }
 

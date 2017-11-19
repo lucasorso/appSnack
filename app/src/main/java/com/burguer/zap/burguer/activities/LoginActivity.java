@@ -27,6 +27,7 @@ import java.util.Objects;
 import javax.security.auth.login.LoginException;
 
 import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
+import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -117,7 +118,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 } else {
                     lMessage = "ERROR !";
                 }
-                Toast.makeText(LoginActivity.this, lMessage, Toast.LENGTH_SHORT).show();
+                Toasty.error(LoginActivity.this, lMessage, Toast.LENGTH_SHORT, true).show();
             }
         });
     }

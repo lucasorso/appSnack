@@ -1,8 +1,7 @@
-package com.burguer.zap.burguer.fragments;
+package com.burguer.zap.burguer.fragments.menurequest;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,8 +10,8 @@ import android.view.ViewGroup;
 
 import com.burguer.zap.burguer.R;
 import com.burguer.zap.burguer.fragments.base.BaseFragment;
-import com.burguer.zap.burguer.fragments.dummy.Menu;
-import com.burguer.zap.burguer.fragments.dummy.Menu.DummyItem;
+import com.burguer.zap.burguer.vo.MenuRequest;
+import com.burguer.zap.burguer.vo.MenuRequest.DummyItem;
 import com.burguer.zap.burguer.vo.Usuario;
 
 /**
@@ -21,7 +20,7 @@ import com.burguer.zap.burguer.vo.Usuario;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class MenuFragment extends BaseFragment {
+public class MenuRequestFragment extends BaseFragment {
 
     private static final String USER = "user";
     private Usuario mUsuario;
@@ -31,11 +30,13 @@ public class MenuFragment extends BaseFragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public MenuFragment() {
+    public MenuRequestFragment() {
     }
 
-    public static MenuFragment newInstance(Usuario aUsuario) {
-        MenuFragment fragment = new MenuFragment();
+    // TODO: Customize parameter initialization
+    @SuppressWarnings("unused")
+    public static MenuRequestFragment newInstance(Usuario aUsuario) {
+        MenuRequestFragment fragment = new MenuRequestFragment();
         Bundle args = new Bundle();
         args.putSerializable("user", aUsuario);
         fragment.setArguments(args);
@@ -45,21 +46,23 @@ public class MenuFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mUsuario = (Usuario) getArguments().getSerializable(USER);
         }
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_menu_list, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_menurequest_list, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
             RecyclerView recyclerView = (RecyclerView) view;
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            recyclerView.setAdapter(new MenuRecyclerViewAdapter(Menu.ITEMS, mListener));
+            recyclerView.setAdapter(new MenuRequestRecyclerViewAdapter(MenuRequest.ITEMS, mListener));
         }
         return view;
     }

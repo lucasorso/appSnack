@@ -1,4 +1,4 @@
-package com.burguer.zap.burguer.fragments;
+package com.burguer.zap.burguer.fragments.promotion;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,8 +8,8 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.burguer.zap.burguer.R;
-import com.burguer.zap.burguer.fragments.PromotionFragment.OnListFragmentInteractionListener;
-import com.burguer.zap.burguer.fragments.dummy.Promotion;
+import com.burguer.zap.burguer.fragments.promotion.PromotionFragment.OnListFragmentInteractionListener;
+import com.burguer.zap.burguer.vo.Promotion;
 import com.burguer.zap.burguer.util.Monetary;
 
 import java.text.SimpleDateFormat;

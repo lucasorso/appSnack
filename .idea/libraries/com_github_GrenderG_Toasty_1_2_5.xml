@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="com.github.GrenderG:Toasty-1.2.5">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/Toasty-1.2.5.aar/f2c40e97147bfe72342e871a73565bae/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/Toasty-1.2.5.aar/f2c40e97147bfe72342e871a73565bae/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

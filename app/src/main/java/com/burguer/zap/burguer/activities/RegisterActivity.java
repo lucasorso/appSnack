@@ -2,6 +2,7 @@ package com.burguer.zap.burguer.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -20,6 +21,7 @@ import com.burguer.zap.burguer.rest.usuario.request.RegisterRequest;
 import com.burguer.zap.burguer.vo.Usuario;
 
 import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
+import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -141,14 +143,15 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             public void onResponse(@NonNull Call<Usuario> call, @NonNull Response<Usuario> response) {
                 Log.e(TAG, response.message());
                 showProgress(false);
-                completeRegister();
+                Toasty.success(RegisterActivity.this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT, true).show();
+                new Handler().postDelayed(() -> completeRegister(), 1000);
             }
 
             @Override
             public void onFailure(@NonNull Call<Usuario> call, @NonNull Throwable t) {
                 Log.e(TAG, t.getMessage());
                 showProgress(false);
-                Toast.makeText(RegisterActivity.this, "Erro realizar cadastro!", Toast.LENGTH_SHORT).show();
+                Toasty.error(RegisterActivity.this, "Erro realizar cadastro!", Toast.LENGTH_SHORT, true).show();
             }
         });
     }

@@ -12,12 +12,12 @@ import android.view.MenuItem;
 
 import com.burguer.zap.burguer.R;
 import com.burguer.zap.burguer.activities.base.BaseActivity;
-import com.burguer.zap.burguer.fragments.MenuFragment;
-import com.burguer.zap.burguer.fragments.MenuRequestFragment;
-import com.burguer.zap.burguer.fragments.PromotionFragment;
-import com.burguer.zap.burguer.fragments.dummy.Promotion;
-import com.burguer.zap.burguer.fragments.dummy.Menu;
-import com.burguer.zap.burguer.fragments.dummy.MenuRequest;
+import com.burguer.zap.burguer.fragments.menu.MenuFragment;
+import com.burguer.zap.burguer.fragments.menurequest.MenuRequestFragment;
+import com.burguer.zap.burguer.fragments.promotion.PromotionFragment;
+import com.burguer.zap.burguer.vo.Promotion;
+import com.burguer.zap.burguer.vo.Menu;
+import com.burguer.zap.burguer.vo.MenuRequest;
 import com.burguer.zap.burguer.properties.APP_PROPS;
 import com.burguer.zap.burguer.repository.UsuarioRepository;
 import com.burguer.zap.burguer.vo.Usuario;
@@ -47,7 +47,7 @@ public class MainActivity extends BaseActivity
         if (mUsuario.getIdApp() == APP_PROPS.USER_TYPE.MANAGER) {
             MenuItem lAdd = menu.add(0, 1, 1, menuIconWithText(getResources().getDrawable(R.drawable.ic_add), getResources().getString(R.string.add_item)));
             lAdd.setOnMenuItemClickListener(aMenuItem -> {
-                startActivity(new Intent(this, AdminCard.class));
+                startActivity(new Intent(this, MenuRegisterActivity.class));
                 return false;
             });
             MenuItem lAddPromotion = menu.add(0, 2, 2, menuIconWithText(getResources().getDrawable(R.drawable.ic_add), getResources().getString(R.string.add_promotion)));

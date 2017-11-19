@@ -37,4 +37,6 @@
 
     <string name="Titulo_List">Nome Comida</string>
     <string name="Descricao_List">Descrição Comida bla bla bla bla bla bla bla bla bla n sei oq n sei oq la</string>
+    <string name="menu_register">Novo cardápio</string>
+    <string name="title_menu">Cardápio</string>
 </resources>

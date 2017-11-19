@@ -1,4 +1,4 @@
-package com.burguer.zap.burguer.fragments.dummy;
+package com.burguer.zap.burguer.vo;
 
 import java.util.ArrayList;
 import java.util.HashMap;

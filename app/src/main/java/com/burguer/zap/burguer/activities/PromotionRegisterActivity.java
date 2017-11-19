@@ -13,10 +13,10 @@ import android.widget.Toast;
 
 import com.burguer.zap.burguer.R;
 import com.burguer.zap.burguer.activities.base.BaseActivity;
-import com.burguer.zap.burguer.fragments.dummy.Promotion;
 import com.burguer.zap.burguer.properties.APP_PROPS;
 import com.burguer.zap.burguer.util.Monetary;
 import com.burguer.zap.burguer.util.MonetaryWatcher;
+import com.burguer.zap.burguer.vo.Promotion;
 import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -27,6 +27,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import es.dmoral.toasty.Toasty;
 
 /**
  * Created by LucasOrso on 10/5/17.
@@ -165,9 +167,9 @@ public class PromotionRegisterActivity extends BaseActivity implements View.OnCl
     private void sendToFirebase(Promotion aPromotion) {
         Boolean lSave = save(aPromotion);
         if (lSave) {
-            Toast.makeText(this, "Salvo com sucesso!", Toast.LENGTH_SHORT).show();
+            Toasty.success(this, "Salvo com sucesso!", Toast.LENGTH_SHORT, true).show();
         } else {
-            Toast.makeText(this, "Erro ao enviar", Toast.LENGTH_SHORT).show();
+            Toasty.error(this, "Erro ao enviar", Toast.LENGTH_SHORT, true).show();
         }
     }
 

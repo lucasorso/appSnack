@@ -1,4 +1,4 @@
-package com.burguer.zap.burguer.fragments;
+package com.burguer.zap.burguer.fragments.promotion;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 
 import com.burguer.zap.burguer.R;
 import com.burguer.zap.burguer.fragments.base.BaseFragment;
-import com.burguer.zap.burguer.fragments.dummy.Promotion;
+import com.burguer.zap.burguer.vo.Promotion;
 import com.burguer.zap.burguer.properties.APP_PROPS;
 import com.burguer.zap.burguer.vo.Usuario;
 import com.google.firebase.database.ChildEventListener;

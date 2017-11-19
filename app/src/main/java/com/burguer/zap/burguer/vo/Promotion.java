@@ -1,4 +1,4 @@
-package com.burguer.zap.burguer.fragments.dummy;
+package com.burguer.zap.burguer.vo;
 
 import com.google.gson.annotations.SerializedName;
 

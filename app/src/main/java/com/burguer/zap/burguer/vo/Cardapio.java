@@ -30,7 +30,7 @@ public class Cardapio {
     private String mDescricao;
 
     @SerializedName("ds_valor")
-    private String mValor; // String Realy ??
+    private String mValor;
 
     @SerializedName("dh_inc")
     private String mDataInserida;

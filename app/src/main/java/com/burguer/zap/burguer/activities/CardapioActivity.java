@@ -2,8 +2,6 @@ package com.burguer.zap.burguer.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 
 import com.burguer.zap.burguer.R;
 import com.burguer.zap.burguer.rest.cardapio.Item;
@@ -28,7 +26,7 @@ public class CardapioActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_alimentos);
+//        setContentView(R.layout.activity_alimentos);
 
         String[] nomeAlimento = new String[5];
         String[] descricaoAlimento = new String[5];
@@ -48,7 +46,7 @@ public class CardapioActivity extends AppCompatActivity {
 
         ItemAdapter adapter = new ItemAdapter(this, lista, R.color.gray);
 
-        ListView view = (ListView) findViewById(R.id.alimentosView);
-        view.setAdapter((ListAdapter) adapter);
+//        ListView view = (ListView) findViewById(R.id.alimentosView);
+//        view.setAdapter((ListAdapter) adapter);
     }
 }
