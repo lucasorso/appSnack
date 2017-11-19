@@ -45,7 +45,7 @@ public class SplashScreenActivity extends BaseActivity {
                 Intent lIntent;
                 UsuarioRepository lRepository = new UsuarioRepository();
                 Usuario lLoggedUser = lRepository.getLoggedUser();
-                if (lLoggedUser != null){
+                if (lLoggedUser != null && lLoggedUser.getLoggedUser()){
                     lIntent = new Intent(SplashScreenActivity.this, MainActivity.class);
                 } else {
                     lIntent = new Intent(SplashScreenActivity.this, LoginActivity.class);

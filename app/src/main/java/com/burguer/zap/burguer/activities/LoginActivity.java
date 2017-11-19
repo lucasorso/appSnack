@@ -2,6 +2,7 @@ package com.burguer.zap.burguer.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
@@ -102,7 +103,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 if (lSucess) {
                     UsuarioRepository lRepository = new UsuarioRepository();
                     lRepository.logInUser(lBody.get(0));
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    new Handler().postDelayed(() -> startActivity(new Intent(LoginActivity.this, MainActivity.class)), 1000);
                 } else {
                     onFailure(call, new LoginException("Login Inválido!"));
                 }

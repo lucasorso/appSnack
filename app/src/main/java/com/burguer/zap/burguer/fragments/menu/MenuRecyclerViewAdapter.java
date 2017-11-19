@@ -19,11 +19,9 @@ import java.util.List;
 public class MenuRecyclerViewAdapter extends RecyclerView.Adapter<MenuRecyclerViewAdapter.ViewHolder> {
 
     private final List<Cardapio> mValues;
-    private final MenuFragment.OnListFragmentInteractionListener mListener;
 
-    MenuRecyclerViewAdapter(List<Cardapio> items, MenuFragment.OnListFragmentInteractionListener listener) {
+    MenuRecyclerViewAdapter(List<Cardapio> items) {
         mValues = items;
-        mListener = listener;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.burguer.zap.burguer.activities;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -195,6 +196,7 @@ public class MenuRegisterActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     public boolean onSupportNavigateUp() {
+        setResult(Activity.RESULT_OK);
         finish();
         return true;
     }

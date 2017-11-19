@@ -2,24 +2,16 @@ package com.burguer.zap.burguer.vo;
 
 import com.google.gson.annotations.SerializedName;
 
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
 /**
  * Created by LucasOrso on 11/7/17.
  */
 
-/*
-    {
-        "id": 1,
-        "nm_prato": "sample string 2",
-        "ds_descricao": "sample string 3",
-        "ds_valor": "sample string 4",
-        "dh_inc": "2017-11-07T21:09:04.997457-02:00",
-        "cliente": "sample string 6",
-        "idConta": 7
-    }
-*/
+public class Cardapio extends RealmObject {
 
-public class Cardapio {
-
+    @PrimaryKey
     @SerializedName("id")
     private Long mId;
 

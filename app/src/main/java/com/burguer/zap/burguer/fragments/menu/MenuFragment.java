@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.burguer.zap.burguer.R;
 import com.burguer.zap.burguer.fragments.base.BaseFragment;
+import com.burguer.zap.burguer.repository.CardapioRepository;
 import com.burguer.zap.burguer.rest.cardapio.CardapioRest;
 import com.burguer.zap.burguer.rest.generic.BaseRetrofit;
 import com.burguer.zap.burguer.vo.Cardapio;
@@ -42,6 +43,7 @@ public class MenuFragment extends BaseFragment {
     private List<Cardapio> mList;
     private Call<List<Cardapio>> mCAllCardapio;
     private MenuRecyclerViewAdapter mAdapter;
+    private CardapioRepository mRepository;
 
     public MenuFragment() {
     }
@@ -62,8 +64,18 @@ public class MenuFragment extends BaseFragment {
         }
         createInterface();
         createCallbackListeners();
-        mList = new ArrayList<>();
-        mAdapter = new MenuRecyclerViewAdapter(mList, mListener);
+        mRepository = new CardapioRepository();
+        mList = mRepository.getAllMenus();
+        mAdapter = new MenuRecyclerViewAdapter(mList);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mCAllCardapio != null) {
+            CardapioRest.Api lApi = getApi();
+            mCAllCardapio = lApi.getListOfCardapio();
+        }
     }
 
     private void createCallbackListeners() {
@@ -73,10 +85,18 @@ public class MenuFragment extends BaseFragment {
                 List<Cardapio> lBody = response.body();
                 if (lBody != null) {
                     if (lBody.size() > 0) {
-                        mList.clear();
-                        mList.addAll(lBody);
-                        mAdapter.notifyDataSetChanged();
-                        Toasty.success(getActivity(), "Lista Atualizada!", Toast.LENGTH_SHORT, true).show();
+                        List<Cardapio> lListaAtualizada = new ArrayList<>();
+                        for (Cardapio lCardapio : lBody) {
+                            if (!mList.contains(lCardapio)) {
+                                lListaAtualizada.add(lCardapio);
+                            }
+                        }
+                        if (!lListaAtualizada.isEmpty()) {
+                            mRepository.saveAll(lListaAtualizada);
+                            mList.addAll(lListaAtualizada);
+                            mAdapter.notifyDataSetChanged();
+                            Toasty.success(getActivity(), "Lista Atualizada!", Toast.LENGTH_SHORT, true).show();
+                        }
                     } else {
                         Toasty.error(getActivity(), "Nenhum cardápio encontrado!", Toast.LENGTH_LONG, true).show();
                     }

@@ -12,21 +12,25 @@ public class UsuarioRepository {
 
     public void logInUser(Usuario aUsuario) {
         aUsuario.setLoggedUser(true);
+        Realm lRealm = Realm.getDefaultInstance();
         try {
-            Realm lRealm = Realm.getDefaultInstance();
             lRealm.executeTransaction(aRealm -> aRealm.insertOrUpdate(aUsuario));
         } catch (Exception aE) {
             aE.printStackTrace();
+        } finally {
+            lRealm.close();
         }
     }
 
     public void logOutUser(Usuario aUsuario) {
         aUsuario.setLoggedUser(false);
+        Realm lRealm = Realm.getDefaultInstance();
         try {
-            Realm lRealm = Realm.getDefaultInstance();
             lRealm.executeTransaction(aRealm -> aRealm.insertOrUpdate(aUsuario));
         } catch (Exception aE) {
             aE.printStackTrace();
+        } finally {
+            lRealm.close();
         }
     }
 
@@ -39,6 +43,7 @@ public class UsuarioRepository {
             if (lResult != null) {
                 lUsuario = lRealm.copyFromRealm(lResult);
             }
+            lRealm.commitTransaction();
         } catch (Exception aE) {
             aE.printStackTrace();
             return null;

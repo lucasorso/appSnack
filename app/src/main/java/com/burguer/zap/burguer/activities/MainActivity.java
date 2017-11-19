@@ -1,5 +1,6 @@
 package com.burguer.zap.burguer.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -15,11 +16,11 @@ import com.burguer.zap.burguer.activities.base.BaseActivity;
 import com.burguer.zap.burguer.fragments.menu.MenuFragment;
 import com.burguer.zap.burguer.fragments.menurequest.MenuRequestFragment;
 import com.burguer.zap.burguer.fragments.promotion.PromotionFragment;
-import com.burguer.zap.burguer.vo.Promotion;
-import com.burguer.zap.burguer.vo.Menu;
-import com.burguer.zap.burguer.vo.MenuRequest;
 import com.burguer.zap.burguer.properties.APP_PROPS;
 import com.burguer.zap.burguer.repository.UsuarioRepository;
+import com.burguer.zap.burguer.vo.Menu;
+import com.burguer.zap.burguer.vo.MenuRequest;
+import com.burguer.zap.burguer.vo.Promotion;
 import com.burguer.zap.burguer.vo.Usuario;
 
 public class MainActivity extends BaseActivity
@@ -43,11 +44,19 @@ public class MainActivity extends BaseActivity
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 199 && resultCode == Activity.RESULT_OK) {
+            changeFragment(0);
+        }
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(android.view.Menu menu) {
         if (mUsuario.getIdApp() == APP_PROPS.USER_TYPE.MANAGER) {
             MenuItem lAdd = menu.add(0, 1, 1, menuIconWithText(getResources().getDrawable(R.drawable.ic_add), getResources().getString(R.string.add_item)));
             lAdd.setOnMenuItemClickListener(aMenuItem -> {
-                startActivity(new Intent(this, MenuRegisterActivity.class));
+                startActivityForResult(new Intent(this, MenuRegisterActivity.class), 199);
                 return false;
             });
             MenuItem lAddPromotion = menu.add(0, 2, 2, menuIconWithText(getResources().getDrawable(R.drawable.ic_add), getResources().getString(R.string.add_promotion)));

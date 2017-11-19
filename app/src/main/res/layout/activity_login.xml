@@ -26,11 +26,13 @@
         android:id="@+id/button_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/checkbox_login"
-        android:layout_below="@+id/checkbox_login"
-        android:layout_marginTop="19dp"
+        android:layout_below="@id/checkbox_login"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="32dp"
         android:background="@drawable/circular_border_shape"
-        android:gravity="center"
+        android:gravity="center_horizontal|center_vertical"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:text="@string/action_sign_in"
@@ -107,7 +109,7 @@
         android:layout_below="@+id/label_password"
         android:layout_marginTop="32dp"
         android:checked="true"
-        android:textColor="@color/gray"
-        android:text="@string/lembrar_email"/>
+        android:text="@string/lembrar_email"
+        android:textColor="@color/gray"/>
 
 </RelativeLayout>
