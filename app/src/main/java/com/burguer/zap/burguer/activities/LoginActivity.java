@@ -102,7 +102,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 }
                 if (lSucess) {
                     UsuarioRepository lRepository = new UsuarioRepository();
-                    lRepository.logInUser(lBody.get(0));
+//                    lRepository.logInUser(lBody.get(0));
                     new Handler().postDelayed(() -> startActivity(new Intent(LoginActivity.this, MainActivity.class)), 1000);
                 } else {
                     onFailure(call, new LoginException("Login Inválido!"));

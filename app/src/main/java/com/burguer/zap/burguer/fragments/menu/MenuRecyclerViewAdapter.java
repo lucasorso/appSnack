@@ -26,7 +26,7 @@ public class MenuRecyclerViewAdapter extends RecyclerView.Adapter<MenuRecyclerVi
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_menu, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -54,9 +54,11 @@ public class MenuRecyclerViewAdapter extends RecyclerView.Adapter<MenuRecyclerVi
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mName = view.findViewById(R.id.name);
-            mContentView = view.findViewById(R.id.content);
-            mValue = view.findViewById(R.id.value);
+            mName = view.findViewById(R.id.item_titulo);
+            mContentView = view.findViewById(R.id.item_descr);
+            mValue = view.findViewById(R.id.valor);
+
+            
         }
 
         @Override
