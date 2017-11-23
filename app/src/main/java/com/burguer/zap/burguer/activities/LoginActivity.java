@@ -136,7 +136,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         Usuario lUsuario = new Usuario();
         lUsuario.setEmail(lEmailView.getText().toString());
         lUsuario.setSenha(lPasswordView.getText().toString());
-        lUsuario.setIdApp(99L);
+        lUsuario.setIdApp(98L);
         UsuarioRepository lRepository = new UsuarioRepository();
         lRepository.logInUser(lUsuario);
     }
@@ -147,7 +147,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         Usuario lUsuario = new Usuario();
         lUsuario.setEmail(lEmailView.getText().toString());
         lUsuario.setSenha(lPasswordView.getText().toString());
-        lUsuario.setIdApp(98L);
+        lUsuario.setIdApp(99L);
         UsuarioRepository lRepository = new UsuarioRepository();
         lRepository.logInUser(lUsuario);
     }
