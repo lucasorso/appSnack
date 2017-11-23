@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/list_item_height">
+    android:layout_height="@dimen/list_item_height"
+    android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/item_icone"
@@ -16,8 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/list_item_height"
         android:orientation="vertical"
-        android:paddingStart="@dimen/activity_horizontal_margin"
-        android:paddingEnd="@dimen/activity_horizontal_margin">
+        android:paddingEnd="@dimen/activity_horizontal_margin"
+        android:paddingStart="@dimen/activity_horizontal_margin">
 
         <TextView
             android:id="@+id/item_titulo"
@@ -52,8 +52,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1.7"
-                android:text="@string/valor"
                 android:gravity="center_vertical"
+                android:text="@string/valor"
                 android:textColor="@android:color/black"
                 android:textStyle="bold" />
 
@@ -62,24 +62,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:text="@string/custo"
                 android:gravity="center_vertical"
+                android:text="@string/custo"
                 android:textColor="@android:color/black" />
 
 
             <Button
                 android:id="@+id/plus"
-                android:text="@string/plus"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="2"/>
+                android:layout_weight="2"
+                android:text="@string/plus"/>
 
             <Button
                 android:id="@+id/less"
-                android:text="@string/less"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="2"/>
+                android:layout_weight="2"
+                android:text="@string/less"/>
 
 
         </LinearLayout>

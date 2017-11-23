@@ -16,6 +16,7 @@ import com.burguer.zap.burguer.activities.base.BaseActivity;
 import com.burguer.zap.burguer.fragments.menu.MenuFragment;
 import com.burguer.zap.burguer.fragments.menurequest.MenuRequestFragment;
 import com.burguer.zap.burguer.fragments.promotion.PromotionFragment;
+import com.burguer.zap.burguer.properties.APP_PROPS;
 import com.burguer.zap.burguer.repository.UsuarioRepository;
 import com.burguer.zap.burguer.vo.Menu;
 import com.burguer.zap.burguer.vo.MenuRequest;
@@ -52,7 +53,7 @@ public class MainActivity extends BaseActivity
 
     @Override
     public boolean onCreateOptionsMenu(android.view.Menu menu) {
-        //if (mUsuario.getIdApp() == APP_PROPS.USER_TYPE.MANAGER) {
+        if (mUsuario.getIdApp() == APP_PROPS.USER_TYPE.MANAGER) {
             MenuItem lAdd = menu.add(0, 1, 1, menuIconWithText(getResources().getDrawable(R.drawable.ic_add), getResources().getString(R.string.add_item)));
             lAdd.setOnMenuItemClickListener(aMenuItem -> {
                 startActivityForResult(new Intent(this, MenuRegisterActivity.class), 199);
@@ -73,13 +74,13 @@ public class MainActivity extends BaseActivity
                 logOutUser();
                 return false;
             });
-        /*} else {
+        } else {
             MenuItem lExit = menu.add(0, 1, 1, menuIconWithText(getResources().getDrawable(R.drawable.ic_exit_to_app), getResources().getString(R.string.exit)));
             lExit.setOnMenuItemClickListener(aMenuItem -> {
                 logOutUser();
                 return false;
             });
-        }*/
+        }
         return super.onCreateOptionsMenu(menu);
     }
 
