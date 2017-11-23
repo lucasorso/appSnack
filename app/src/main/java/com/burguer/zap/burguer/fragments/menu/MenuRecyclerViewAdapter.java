@@ -57,8 +57,6 @@ public class MenuRecyclerViewAdapter extends RecyclerView.Adapter<MenuRecyclerVi
             mName = view.findViewById(R.id.item_titulo);
             mContentView = view.findViewById(R.id.item_descr);
             mValue = view.findViewById(R.id.valor);
-
-            
         }
 
         @Override
