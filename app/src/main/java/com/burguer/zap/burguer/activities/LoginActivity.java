@@ -102,6 +102,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 }
                 if (lSucess) {
                     UsuarioRepository lRepository = new UsuarioRepository();
+                    EditText lEmailView = findViewById(R.id.email);
+                    boolean lManager = lEmailView.getText().toString().contains("manager");
+                    if (lManager) {
+                        fakeManagerLogin();
+                    } else {
+                        fakeUserLogin();
+                    }
                     lRepository.logInUser(lBody.get(0));
                     new Handler().postDelayed(() -> startActivity(new Intent(LoginActivity.this, MainActivity.class)), 1000);
                 } else {
@@ -122,6 +129,28 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 Toasty.error(LoginActivity.this, lMessage, Toast.LENGTH_SHORT, true).show();
             }
         });
+    }
+
+    private void fakeUserLogin() {
+        EditText lEmailView = findViewById(R.id.email);
+        EditText lPasswordView = findViewById(R.id.password);
+        Usuario lUsuario = new Usuario();
+        lUsuario.setEmail(lEmailView.getText().toString());
+        lUsuario.setSenha(lPasswordView.getText().toString());
+        lUsuario.setIdApp(99L);
+        UsuarioRepository lRepository = new UsuarioRepository();
+        lRepository.logInUser(lUsuario);
+    }
+
+    private void fakeManagerLogin() {
+        EditText lEmailView = findViewById(R.id.email);
+        EditText lPasswordView = findViewById(R.id.password);
+        Usuario lUsuario = new Usuario();
+        lUsuario.setEmail(lEmailView.getText().toString());
+        lUsuario.setSenha(lPasswordView.getText().toString());
+        lUsuario.setIdApp(98L);
+        UsuarioRepository lRepository = new UsuarioRepository();
+        lRepository.logInUser(lUsuario);
     }
 
     private boolean validateWsRepose(Usuario aUsuario) {
