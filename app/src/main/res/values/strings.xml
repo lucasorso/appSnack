@@ -27,6 +27,7 @@
     <string name="lembrar_email">Lembrar e mail</string>
     <string name="exit">Sair</string>
     <string name="add_promotion">Adicionar promoção</string>
+    <string name="lista_pedidos">Lista de Pedidos</string>
     <string name="promoiton_register">Cadastro de promoção</string>
     <string name="value">Valor</string>
     <string name="description">Descrição</string>
@@ -39,4 +40,8 @@
     <string name="Descricao_List">Descrição Comida bla bla bla bla bla bla bla bla bla n sei oq n sei oq la</string>
     <string name="menu_register">Novo cardápio</string>
     <string name="title_menu">Cardápio</string>
+    <string name="valor">VALOR R$:</string>
+    <string name="custo">20,00</string>
+    <string name="plus">+</string>
+    <string name="less">-</string>
 </resources>

@@ -101,7 +101,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     onFailure(call, new LoginException("Verificar Retorno do WS!"));
                 }
                 if (lSucess) {
-                    UsuarioRepository lRepository = new UsuarioRepository();
                     EditText lEmailView = findViewById(R.id.email);
                     boolean lManager = lEmailView.getText().toString().contains("manager");
                     if (lManager) {
